@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全部角色信息</title>
+    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/static/css/bootstrap-theme.css}" rel="stylesheet">
+    <link th:href="@{/static/js/bootstrap.js}" rel="stylesheet">
+    <link th:href="@{/static/js/jquery-3.3.1.js}" rel="stylesheet">
+</head>
+<body path="${pageContext.request.contextPath}">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>全选</td>
+        <td>ID</td>
+        <td>用户名</td>
+        <td>密码</td>
+    </tr>
+    </thead>
+    <tbody th:each="users : ${ulist}">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td th:text="${users.id}"></td>
+        <td th:text="${users.username}"></td>
+        <td th:text="${users.password}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script>
+ /*   var path = $("body").attr("path");
+    function f() {
+        $.ajax({
+            url:path+"All",
+            type: 'POST',
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                var json = JSON.parse(result);
+                alert(json);
+            }
+        })
+    }
+    f();*/
+</script>
