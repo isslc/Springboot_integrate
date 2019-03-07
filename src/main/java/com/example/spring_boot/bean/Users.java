@@ -5,6 +5,9 @@ import io.swagger.annotations.ApiParam;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+
+import java.io.Serializable;
 
 /**
  * @Author: Administrator
@@ -14,8 +17,11 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class Users {
+/*Serializable序列化*/
+public class Users implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int id;
     private String username;
     private String password;
+
 }

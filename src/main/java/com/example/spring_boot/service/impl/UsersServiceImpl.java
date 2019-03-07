@@ -4,7 +4,7 @@ import com.example.spring_boot.bean.Users;
 import com.example.spring_boot.mapper.UsersMapper;
 import com.example.spring_boot.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +20,7 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private UsersMapper usersMapper;
 
+
     @Override
     public Users login(Users users) {
         return usersMapper.login(users);
@@ -30,8 +31,11 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.sendUsers(users);
     }
 
+    @Cacheable(cacheNames="userList")
     @Override
     public List<Users> All() {
+        System.out.println("All，输出此句代表没有走缓存");
+
         return usersMapper.All();
     }
 }

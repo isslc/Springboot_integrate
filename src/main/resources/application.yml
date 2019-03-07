@@ -17,6 +17,17 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .html
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: 1
+        min-idle: 0
+    timeout: 10000
 logging:
   level:
     com.example.spring_boot: debug
