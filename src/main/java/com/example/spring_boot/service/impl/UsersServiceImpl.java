@@ -4,6 +4,8 @@ import com.example.spring_boot.bean.Users;
 import com.example.spring_boot.mapper.UsersMapper;
 import com.example.spring_boot.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +28,13 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.login(users);
     }
 
+    @CacheEvict( value = "userList" ,allEntries = true)
     @Override
     public boolean sendUsers(Users users) {
         return usersMapper.sendUsers(users);
     }
 
-    @Cacheable(cacheNames="userList")
+    @Cacheable (value="userList" )
     @Override
     public List<Users> All() {
         System.out.println("All，输出此句代表没有走缓存");

@@ -31,7 +31,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     }
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/","/login","/static/**");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/","/login","/static/**","/register.html","/sendUser");
         super.addInterceptors(registry);
     }
 

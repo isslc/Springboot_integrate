@@ -13,6 +13,6 @@
     </select>
 
     <insert id="sendUsers" parameterType="com.example.spring_boot.bean.Users">
-        insert into users(username,password) value(#{username},#{password})
+        insert into user(username,password) value(#{username},#{password})
     </insert>
 </mapper>

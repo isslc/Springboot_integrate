@@ -27,12 +27,15 @@ public class UsersController {
         return "/login.html";
     }
 */
-/*    @RequestMapping("/sendUser")
+    @RequestMapping("/sendUser")
     public String sendUser(Users users){
-        System.out.println(users);
         usersService.sendUsers(users);
-        return "redirect:/login";
-    }*/
+        return "redirect:/";
+    }
+    @RequestMapping("/register.html")
+    public String register(Users users){
+        return "/register";
+    }
 
     @RequestMapping("/login")
     public String login(Users users, HttpServletRequest request, HttpSession session){
