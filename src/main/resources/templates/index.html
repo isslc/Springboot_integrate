@@ -16,6 +16,7 @@
         <td>ID</td>
         <td>用户名</td>
         <td>密码</td>
+        <td>超作</td>
     </tr>
     </thead>
     <tbody th:each="users : ${ulist}">
@@ -24,13 +25,14 @@
         <td th:text="${users.id}"></td>
         <td th:text="${users.username}"></td>
         <td th:text="${users.password}"></td>
+        <td ><form th:action="@{/del/}+${users.id}"><input type="submit" value="删除"></form></td>
     </tr>
     </tbody>
 </table>
 </body>
 </html>
 <script>
- /*   var path = $("body").attr("path");
+    var path = $("body").attr("path");
     function f() {
         $.ajax({
             url:path+"All",
@@ -45,5 +47,5 @@
             }
         })
     }
-    f();*/
+    f();
 </script>

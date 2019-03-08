@@ -2,13 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>jQuery用户登录拼图滑块验证模板 - 源码之家</title>
+    <title>注册</title>
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
     <link href="../static/css/style.css" th:href="@{/static/css/style.css}" rel="stylesheet">
-    <link href="../static/js/img_ver.js" th:href="@{/static/js/img_ver.js}" rel="stylesheet">
+    <script type="text/javascript" href="../static/js/img_ver.js" th:href="@{/static/js/img_ver.js}" rel=""></script>
     <link href="../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}" rel="stylesheet">
     <link href="../static/css/bootstrap-theme.css" th:href="@{/static/css/bootstrap-theme.css}" rel="stylesheet">
-    <link href="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}" rel="stylesheet">
-    <link href="../static/js/jquery-3.3.1.js" th:href="@{/static/js/jquery-3.3.1.js}" rel="stylesheet">
+    <script type="text/javascript" href="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
     <style>
         .bxs-row {
             margin-bottom: 12px;
@@ -59,56 +62,47 @@
             font-size: 13px;
         }
 
-        .submit {
-            background-color: #0070ba;
-            color: #fff;
-            border: 1px solid #0070ba;
-        }
-
-        .submit:hover {
-            background-color: #005ea6;
-        }
-
-        .verBox {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            left: 404px;
-            top: 0;
-            opacity: 0;
-            transition: all 0.8s;
-            padding-top: 55px;
-        }
-
-        .err {
-            margin: 12px 0 0;
-            line-height: 12px;
-            height: 12px;
-            font-size: 12px;
-            color: red;
-        }
     </style>
 
 </head>
 <body style="background-image: linear-gradient(to right ,#416afa,#4cd8ff)">
 
 <div class="logo-box" style="background-color: white">
-
+    <div style="text-align: center;font-size: 20px;margin-left: -30px;margin-top: 20px"> 注册</div>
     <form action="/sendUser" class="form-horizontal col-sm-3 col-md-3">
         <div class="login" style="text-align: center;margin-left: 30px">
             <div class="bxs-row">
-                <input class="form-control" type="text" name="username" placeholder="username">
+                <input class="form-control" id="username" type="text" name="username" placeholder="username"
+                       onclick="select()">
             </div>
             <div class="bxs-row">
                 <input class="form-control" type="password" name="password" placeholder="password">
             </div>
+            <div id="div"></div>
             <div class="bxs-row">
                 <input class="btn btn-primary btn-lg btn-block" type="submit" value="注册">
             </div>
         </div>
     </form>
-
 </div>
+<script>
+    function initfrom() {
+        jQuery(":input[name='username']").change(function () {
+            var val = $("#username").val();
+            if (val != null) {
+                var url = "http://localhost:8081/selectSolo/" + val;
+                $.get(url, function (result) {
+                    var json = JSON.parse(result);
+                    if (json.success) {
+                        $("#username").val("");
+                        alert("该用户名已存在请重新输入！！！")
+                    }
+                })
+            }
+        })
+    }
 
+    initfrom()
+</script>
 </body>
 </html>

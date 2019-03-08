@@ -98,6 +98,14 @@
             <artifactId>dubbo-serialization-fastjson</artifactId>
             <version>2.6.5</version>
         </dependency>
+        <!-- 添加json的依赖包 -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.3</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
     </dependencies>
 
     <build>

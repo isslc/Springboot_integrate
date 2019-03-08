@@ -20,6 +20,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
         registry.addViewController("/").setViewName("/login");
         registry.addViewController("/login").setViewName("/");
         registry.addViewController("/main.html").setViewName("Home");
+        registry.addViewController("/register.html").setViewName("register");
     }
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -31,7 +32,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     }
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/","/login","/static/**","/register.html","/sendUser");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/","/login","/static/**","/register.html","/sendUser","/selectSolo/{username}");
         super.addInterceptors(registry);
     }
 

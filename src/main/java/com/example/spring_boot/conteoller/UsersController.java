@@ -2,14 +2,18 @@ package com.example.spring_boot.conteoller;
 
 import com.example.spring_boot.bean.Users;
 import com.example.spring_boot.service.UsersService;
+import com.example.spring_boot.util.ResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -32,11 +36,11 @@ public class UsersController {
         usersService.sendUsers(users);
         return "redirect:/";
     }
-    @RequestMapping("/register.html")
-    public String register(Users users){
-        return "/register";
+    @RequestMapping("/del/{id}")
+    public String del(@PathVariable Integer id){
+        usersService.del(id);
+        return "redirect:/All";
     }
-
     @RequestMapping("/login")
     public String login(Users users, HttpServletRequest request, HttpSession session){
         Users users1=usersService.login(users);
@@ -58,5 +62,29 @@ public class UsersController {
         request.setAttribute("ulist",usersService.All());
         return "/index";
     }
+    @RequestMapping("/selectSolo/{username}")
+    public String selectSolo(@PathVariable String username, HttpServletResponse response){
+        Users users=usersService.selectsolo(username);
+        JSONObject result = new JSONObject();
+        if (users!=null){
+            result.put("data", "<p style=\"color: red\">该用户名已存在</p>");
+            result.put("success", true);
+            try {
+                ResponseUtil.write(response, result);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }else{
+            result.put("success", false);
+            try {
+                ResponseUtil.write(response, result);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
 
 }

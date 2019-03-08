@@ -12,5 +12,7 @@ import java.util.List;
 public interface UsersService {
     public Users login(Users users);
     public boolean sendUsers(Users users);
+    public Users selectsolo(String username);
+    public boolean del(Integer id);
     public List<Users> All();
 }

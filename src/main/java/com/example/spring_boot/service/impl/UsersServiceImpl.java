@@ -34,6 +34,17 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.sendUsers(users);
     }
 
+    @Override
+    public Users selectsolo(String username) {
+        return usersMapper.selectsolo(username);
+    }
+
+    @CacheEvict( value = "userList" ,allEntries = true)
+    @Override
+    public boolean del(Integer id) {
+        return usersMapper.del(id);
+    }
+
     @Cacheable (value="userList" )
     @Override
     public List<Users> All() {

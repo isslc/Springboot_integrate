@@ -7,6 +7,9 @@
     <select id="All" resultType="com.example.spring_boot.bean.Users">
         select * from user
     </select>
+    <select id="selectsolo" resultType="com.example.spring_boot.bean.Users" parameterType="java.lang.String" >
+        select * from user WHERE username=#{username}
+    </select>
 
     <select id="login" resultType="com.example.spring_boot.bean.Users" parameterType="com.example.spring_boot.bean.Users">
         select * from user WHERE username=#{username} AND password=#{password}
@@ -15,4 +18,7 @@
     <insert id="sendUsers" parameterType="com.example.spring_boot.bean.Users">
         insert into user(username,password) value(#{username},#{password})
     </insert>
+    <delete id="del" parameterType="java.lang.Integer" >
+        delete from user where id=#{id}
+    </delete>
 </mapper>
