@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
 //@EnableWebMvc   不要接管SpringMVC
 /*配置拦截器*/
@@ -14,7 +15,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-       // super.addViewControllers(registry);
+        // super.addViewControllers(registry);
         //浏览器发送 /login 请求来到 /  (重定向)
         registry.addViewController("/login.html").setViewName("/login");
         registry.addViewController("/").setViewName("/login");
@@ -22,6 +23,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
         registry.addViewController("/main.html").setViewName("Home");
         registry.addViewController("/register.html").setViewName("register");
     }
+
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**")
@@ -30,9 +32,12 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/templates/");
         super.addResourceHandlers(registry);
     }
+
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/","/login","/static/**","/register.html","/sendUser","/selectSolo/{username}");
+        registry.addInterceptor(new LoginHandlerInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/", "/login", "/static/**", "/register.html", "/sendUser", "/selectSolo/{username}");
         super.addInterceptors(registry);
     }
 

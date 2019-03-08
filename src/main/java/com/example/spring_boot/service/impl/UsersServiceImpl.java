@@ -5,7 +5,6 @@ import com.example.spring_boot.mapper.UsersMapper;
 import com.example.spring_boot.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
