@@ -95,7 +95,7 @@
 <div class="logo-box" style="background-color: white">
     <div style="text-align: center;font-size: 20px;margin-left: -30px;margin-top: 20px" > 登陆</div>
 
-    <form action="/login" method="post" class="form-horizontal col-sm-3 col-md-3">
+    <form action="/login" id="login" method="post" class="form-horizontal col-sm-3 col-md-3">
         <div class="login" style="text-align: center;margin-left: 30px">
             <div class="bxs-row">
                 <input class="form-control" type="text" name="username" placeholder="username">
@@ -114,8 +114,17 @@
     </form>
 
 </div>
-<script>
-
-</script>
+<!--<script>
+    $("#button").click(function () {
+        var data = new FormData($("#login")[0]);
+        $.ajax({
+            type: "post",
+            url:  "/login/",
+            data: data,
+            processData: false,
+            contentType: false,
+        });
+    })
+</script>-->
 </body>
 </html>
