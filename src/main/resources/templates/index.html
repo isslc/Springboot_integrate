@@ -6,46 +6,86 @@
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet">
     <link th:href="@{/static/css/bootstrap-theme.css}" rel="stylesheet">
     <link th:href="@{/static/js/bootstrap.js}" rel="stylesheet">
-    <link th:href="@{/static/js/jquery-3.3.1.js}" rel="stylesheet">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
 </head>
-<body path="${pageContext.request.contextPath}">
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <td>全选</td>
-        <td>ID</td>
-        <td>用户名</td>
-        <td>密码</td>
-        <td>超作</td>
-    </tr>
-    </thead>
-    <tbody th:each="users : ${ulist}">
-    <tr>
-        <td><input type="checkbox"></td>
-        <td th:text="${users.id}"></td>
-        <td th:text="${users.username}"></td>
-        <td th:text="${users.password}"></td>
-        <td ><form th:action="@{/del/}+${users.id}"><input type="submit" value="删除"></form></td>
-    </tr>
-    </tbody>
-</table>
+<body>
+<div id="app">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>全选</td>
+            <td>ID</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>超作</td>
+        </tr>
+        </thead>
+        <tr v-for="item in list ">
+            <td><input type="checkbox"></td>
+            <td>{{item.id}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.password}}</td>
+            <td>
+                <input @click="post(item.id)"  type="submit" value="删除">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
 <script>
-    var path = $("body").attr("path");
-    function f() {
-        $.ajax({
-            url:path+"All",
-            type: 'POST',
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (result) {
-                var json = JSON.parse(result);
-                alert(json);
+    new Vue({
+        el: '#app',
+        data: {
+            list: []
+        },
+        //vue对象实例创建成功之后就会自动调用这个方法
+        //如果你想写的方法在舒适化的时候就被调用的话就要要用到created这个
+        created: function () {
+            this.getlist();//这里定义这个方法，vue实例之后运行到这里就调用这个函数
+        },
+        methods: {
+            getlist: function () {
+                //请求服务器的api获取到品牌的数据列表
+                this.$http.get('/All').then(function (result) {
+                    //处理正常的逻辑数据处理
+                    console.log(result.body.data);
+                    this.list = result.body.data;
+
+                });
+            },
+            post: function (id) {
+                //发送 post 请求
+                this.$http.post('/del/'+id).then(function (result) {
+                    if (result.body.msg){
+                        alert("删除失败")
+                    }else {
+                        location.reload()
+                    }
+                });
+
             }
-        })
-    }
-    f();
+        }
+    });
+
+
+    /*
+        function f() {
+            $.ajax({
+                url:  "/All",
+                type: 'POST',
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    var json = JSON.parse(result);
+                    alert(json);
+                }
+            })
+        }
+        f();*/
 </script>

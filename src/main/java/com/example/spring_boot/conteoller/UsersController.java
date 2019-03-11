@@ -37,9 +37,18 @@ public class UsersController {
         return "redirect:/";
     }
     @RequestMapping("/del/{id}")
-    public String del(@PathVariable Integer id){
+    public String del(@PathVariable Integer id , HttpServletResponse response){
         usersService.del(id);
-        return "redirect:/All";
+        JSONObject result = new JSONObject();
+        if (usersService!=null){
+            result.put("msg",false);
+        }
+        try {
+            ResponseUtil.write(response, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     @RequestMapping("/login")
     public String login(Users users, HttpServletRequest request, HttpSession session){
@@ -58,9 +67,15 @@ public class UsersController {
     }
 
     @RequestMapping("/All")
-    public String selectUser(HttpServletRequest request){
-        request.setAttribute("ulist",usersService.All());
-        return "/index";
+    public String selectUser(HttpServletRequest request, HttpServletResponse response){
+        JSONObject result = new JSONObject();
+        result.put("data",usersService.All());
+        try {
+            ResponseUtil.write(response, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     @RequestMapping("/selectSolo/{username}")
     public String selectSolo(@PathVariable String username, HttpServletResponse response){
