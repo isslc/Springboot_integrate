@@ -3,9 +3,6 @@ package com.example.spring_boot.conteoller;
 import com.example.spring_boot.bean.Users;
 import com.example.spring_boot.service.UsersService;
 import com.example.spring_boot.util.ResponseUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +27,13 @@ public class UsersController {
     public String login(){
         return "/login.html";
     }
-*/
+    */
+
+    /**
+     *  注册
+     * @param users
+     * @return 重定向
+     */
     @RequestMapping("/sendUser")
     public String sendUser(Users users){
         usersService.sendUsers(users);

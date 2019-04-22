@@ -9,14 +9,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
 //@EnableWebMvc   不要接管SpringMVC
-/*配置拦截器*/
+/**
+ * 配置拦截器
+ * */
 @Configuration
 public class MyMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+        /**
+         * 浏览器发送 /login 请求来到 /  (重定向)
+         */
         // super.addViewControllers(registry);
-        //浏览器发送 /login 请求来到 /  (重定向)
         registry.addViewController("/login.html").setViewName("/login");
         registry.addViewController("/").setViewName("/login");
         registry.addViewController("/login").setViewName("/");

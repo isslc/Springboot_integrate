@@ -88,11 +88,11 @@
 <script>
     function initfrom() {
         jQuery(":input[name='username']").change(function () {
-            var val = $("#username").val();
+            let val = $("#username").val();
             if (val != null) {
-                var url = "http://localhost:8081/selectSolo/" + val;
+                let url = "/selectSolo/" + val;
                 $.get(url, function (result) {
-                    var json = JSON.parse(result);
+                    let json = JSON.parse(result);
                     if (json.success) {
                         $("#username").val("");
                         alert("该用户名已存在请重新输入！！！")
