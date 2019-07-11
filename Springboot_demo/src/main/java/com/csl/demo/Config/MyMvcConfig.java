@@ -1,4 +1,4 @@
-package com.csl.demo.config;
+package com.csl.demo.Config;
 
 import com.csl.demo.component.LoginHandlerInterceptor;
 import org.springframework.context.annotation.Configuration;
