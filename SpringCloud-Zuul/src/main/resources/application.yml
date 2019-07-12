@@ -1,0 +1,27 @@
+server:
+  port: 8400
+zuul:
+  routes:
+    springcloud-consumer-config: /consumer/**
+    springcloud-provider-config: /provider/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    appname: sc-zuul
+
+spring:
+  application:
+    name: sc-zuul
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: sc-config-server
+      fail-fast: true
+      username: root
+      password: booszy
+      profile: csdn
