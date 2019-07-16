@@ -22,6 +22,6 @@ spring:
         enabled: true
         service-id: sc-config-server
       fail-fast: true
-      username: root
-      password: booszy
+      username: admin
+      password: admin
       profile: csdn

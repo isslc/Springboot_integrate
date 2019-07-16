@@ -5,6 +5,8 @@ spring:
     name: sc-sc-zipkin
   profiles:
     active: csdn
+  main :
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:
@@ -18,4 +20,3 @@ management:
     web:
       server:
         auto-time-requests: false
-
