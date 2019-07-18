@@ -1,6 +1,9 @@
 server:
   port: 8400
 zuul:
+  ribbon-isolation-strategy: thread
+  thread-pool:
+    use-separate-thread-pools: true
   routes:
     springcloud-consumer-config: /consumer/**
     springcloud-provider-config: /provider/**
