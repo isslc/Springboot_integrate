@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.csl</groupId>
-    <artifactId>springclouddashboard</artifactId>
+    <artifactId>SpringCloud-Dashboard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springclouddashboard</name>
+    <name>SpringCloud-Dashboard</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
