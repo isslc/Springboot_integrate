@@ -6,6 +6,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -29,6 +30,12 @@ public class FeignController {
     @ApiOperation(tags="输入什么显示什么",value="输入什么显示什么")
     public Mono<String> sayHelloWorld(@PathVariable("wd") String parm) {
         String result = feignClient.sayHelloWorld(parm);
+        return Mono.just(result);
+    }
+    @GetMapping("/feign/hi")
+    @ApiOperation(tags="负载均衡测试接口",value="负载均衡测试接口")
+    public Mono<String> home(@RequestParam String name) {
+        String result = feignClient.home(name);
         return Mono.just(result);
     }
     @ApiOperation(tags="显示一个list集合",value="显示一个list集合")

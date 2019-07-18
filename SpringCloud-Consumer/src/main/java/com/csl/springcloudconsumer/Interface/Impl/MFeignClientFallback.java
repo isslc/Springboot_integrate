@@ -19,6 +19,11 @@ public class MFeignClientFallback implements MFeignClient {
     }
 
     @Override
+    public String home(String msg) {
+        return "home";
+    }
+
+    @Override
     public List<Integer> list() {
         return new ArrayList<>();
     }

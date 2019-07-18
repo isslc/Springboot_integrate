@@ -1,9 +1,7 @@
 package com.csl.springcloudprovider.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -33,5 +31,13 @@ public class IndexController {
         list.add(93);
         Flux<Integer> userFlux = Flux.fromIterable(list);
         return userFlux;
+    }
+
+    //负载均衡测试接口
+    @Value("${server.port}")
+    String port;
+    @RequestMapping("/hi")
+    public String home(@RequestParam String name) {
+        return "hi "+name+",i am from port:" +port;
     }
 }
