@@ -10,6 +10,7 @@ import javax.jms.Queue;
 import javax.jms.Topic;
 
 /**
+ * 消费者
  * @author csl
  * @create 2019-07-11 10:56
  */
@@ -26,6 +27,10 @@ public class PublishController {
     @Autowired
     private Topic topic;
 
+    /**
+     * 点对点
+     * @return
+     */
     @RequestMapping("/queue")
     public String queue(){
 
@@ -41,6 +46,10 @@ public class PublishController {
         System.out.println(msg);
     }
 
+    /**
+     * 发布订阅
+     * @return
+     */
     @RequestMapping("/topic")
     public String topic(){
 

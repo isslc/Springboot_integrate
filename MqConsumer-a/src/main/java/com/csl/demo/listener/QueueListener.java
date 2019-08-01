@@ -1,4 +1,4 @@
-package com.csl.demo;
+package com.csl.demo.listener;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.SendTo;
