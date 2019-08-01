@@ -28,7 +28,7 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.login(users);
     }
 
-    @CacheEvict( value = "userList" ,allEntries = true)
+    @CacheEvict( value = "poemInfo" ,allEntries = true)
     @Override
     public boolean sendUsers(Users users) {
         return usersMapper.sendUsers(users);
@@ -39,13 +39,13 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.selectsolo(username);
     }
 
-    @CacheEvict( value = "userList" ,allEntries = true)
+    @CacheEvict( value = "poemInfo" ,allEntries = true)
     @Override
     public boolean del(Integer id) {
         return usersMapper.del(id);
     }
 
-    @Cacheable(value="userList" )
+    @Cacheable(value="poemInfo" )  //自动根据方法生成缓存
     @Override
     public List<Users> All() {
         System.out.println("All，输出此句代表没有走缓存");
