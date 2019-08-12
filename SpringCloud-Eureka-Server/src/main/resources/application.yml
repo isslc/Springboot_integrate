@@ -6,9 +6,9 @@ eureka:
   instance:
     hostname: localhost
   server:
-    # \u5173\u95ED\u81EA\u6211\u4FDD\u62A4
+    # 关闭自我保护
     enable-self-preservation: false
-    # \u6E05\u7406\u670D\u52A1\u5668
+    # 清理服务器
     eviction-interval-timer-in-ms: 5000
   client:
     healthcheck:
@@ -27,7 +27,7 @@ spring:
       password: admin
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/db_mblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 123456
 
