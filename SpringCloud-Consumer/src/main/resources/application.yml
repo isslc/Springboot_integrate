@@ -27,11 +27,11 @@ spring:
       profile: csdn
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/db_mblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 123456
 
-#\u65B0\u7248\u914D\u7F6E\uFF0C\u5426\u5219\u540E\u9762dashboard\u65E0\u6CD5\u627E\u5230hystrix.stream
+#新版配置，否则后面dashboard无法找到hystrix.stream
 management:
   endpoints:
     web:
