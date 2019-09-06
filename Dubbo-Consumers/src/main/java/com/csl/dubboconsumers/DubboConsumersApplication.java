@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by hang on 2018/8/29.
  */
 @SpringBootApplication
-public class DubboConsumersApplication implements CommandLineRunner {
-    public static void main(String[] args) {
-        SpringApplication.run(DubboConsumersApplication.class, args);
-    }
+    public class DubboConsumersApplication implements CommandLineRunner {
+        public static void main(String[] args) {
+            SpringApplication.run(DubboConsumersApplication.class, args);
+        }
 
     @Override
     public void run(String... args) throws Exception {

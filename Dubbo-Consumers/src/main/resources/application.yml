@@ -1,5 +1,5 @@
 server:
-  port: 8081 #tomcat¶Ë¿ÚºÅ
+  port: 8080 #tomcatç«¯å£å·
 
 spring:
   datasource:
@@ -11,13 +11,13 @@ spring:
   dubbo:
     application:
       name: service-consumers
-    base-package: com.csl.dubboconsumers  # dubbo·şÎñ·¢²¼ÕßÊµÏÖÀà×¢½âËùÔÚµÄ°ü
+    base-package: com.csl.dubboconsumers  # dubboæœåŠ¡å‘å¸ƒè€…å®ç°ç±»æ³¨è§£æ‰€åœ¨çš„åŒ…
     registry:
-      address: 127.0.0.1                   # zookeeper×¢²áÖĞĞÄµÄµØÖ·
-      port: 2181                           # zookeeper×¢²áÖĞĞÄµÄ¶Ë¿Ú
+      address: 127.0.0.1                   # zookeeperæ³¨å†Œä¸­å¿ƒçš„åœ°å€
+      port: 2181                           # zookeeperæ³¨å†Œä¸­å¿ƒçš„ç«¯å£
     protocol:
       name: dubbo
       serialization: hessian2
     provider:
-      retries: 0                 # ·şÎñµ÷ÓÃÖØÊÔ´ÎÊı£¬·şÎñ·¢²¼Õß²»¸øÖØÊÔ£¬ÈÃ·şÎñµ÷ÓÃÕß×Ô¼ºÖØÊÔ
+      retries: 0                 # æœåŠ¡è°ƒç”¨é‡è¯•æ¬¡æ•°ï¼ŒæœåŠ¡å‘å¸ƒè€…ä¸ç»™é‡è¯•ï¼Œè®©æœåŠ¡è°ƒç”¨è€…è‡ªå·±é‡è¯•
 

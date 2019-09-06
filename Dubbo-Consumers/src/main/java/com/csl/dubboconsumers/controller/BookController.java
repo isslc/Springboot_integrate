@@ -6,6 +6,7 @@ package com.csl.dubboconsumers.controller;
  */
 
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.csl.dubbointerface.dao.BookService;
 import com.reger.dubbo.annotation.Inject;
 import org.springframework.boot.CommandLineRunner;
@@ -26,7 +27,7 @@ public class BookController implements CommandLineRunner {
     @Inject
     public BookService service;
     // 使用兼容注入
-    @Inject
+    @Reference
     public BookService bidService;
     @Override
     public void run(String... args){
